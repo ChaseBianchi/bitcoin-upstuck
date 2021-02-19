@@ -8,9 +8,12 @@ import schema from '../validation/formSchema'
 const FormStyled = styled.form`
 // display: flex;
 // flex-flow: column nowrap;
-
+label{
+    font-size: 2rem;
+}
 input{
     width: 50px;
+    height: 20px
 }
 
 `
@@ -44,9 +47,9 @@ const onSubmit = (e)=>{
 
     return (
         <FormStyled onSubmit={onSubmit}>
-            <label htmlFor='userBitcoin'>I have <input onChange={inputChange} id='btcUserAmount' name='btcUserAmount' value={form.btcUserAmount} placeholder='0.15'/> Bitcoin</label>
+            <label htmlFor='userBitcoin'>I own <input onChange={inputChange} id='btcUserAmount' name='btcUserAmount' value={form.btcUserAmount} placeholder='ex. 0.1'/> Bitcoin</label>
             <p style={{color:'red'}}>{formErr.btcUserAmount}</p>
-            <br/><button>Calculate Upstuck</button>
+            <button>Calculate Upstuck</button>
         </FormStyled>
     )
 }

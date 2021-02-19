@@ -1,18 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
+import {fetchApi} from '../actions/index'
 
 function TopDisplay(props) {
+    useEffect(()=>{
+        props.fetchApi()
+      },[])
     return (
         <div>
             {
             props.btcCurrPrice===0
-            ? <h3>Price: loading...</h3>
-            : <h3>Price: ${props.btcCurrPrice}</h3>
+            ? <h3>Current Price: loading...</h3>
+            : <h3>Current Price: ${props.btcCurrPrice}</h3>
             }
             {
             props.btcAth===0
-            ? <h3>ATH: loading...</h3>
-            : <h3>ATH: ${props.btcAth}</h3>
+            ? <h3>All Time High: loading...</h3>
+            : <h3>All Time High: ${props.btcAth}</h3>
             }
         </div>
     )
@@ -25,4 +29,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps)(TopDisplay);
+export default connect(mapStateToProps,{fetchApi})(TopDisplay);
